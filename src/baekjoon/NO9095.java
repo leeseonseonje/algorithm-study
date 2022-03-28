@@ -17,7 +17,7 @@ public class NO9095 {
 
 
     }
-
+    
     static void logic(int n) {
         result[1] = 1;
         result[2] = 2;
