@@ -12,34 +12,28 @@ public class ReportResult {
 
     public static void main(String[] args) {
 
-        Set<Report> reports = Arrays.stream(report)
+        List<Report> reports = Arrays.stream(report)
                 .map(r -> new Report(reportSplit(r, 0), reportSplit(r, 1)))
-                .collect(toSet());
-
-        System.out.println(reports);
+                .distinct()
+                .collect(toList());
 
         Map<String, Integer> map = new HashMap<>();
+
         for (Report r : reports) {
             Integer count = map.getOrDefault(r.getTroll(), 0);
             map.put(r.getTroll(), ++count);
         }
-
-        map.keySet().forEach(e -> System.out.println(e + " : " + map.get(e)));
 
         Map<String, Integer> m = new HashMap<>();
 
         for (String s : map.keySet()) {
             if (map.get(s) >= k) {
                 for (Report r : reports) {
-                    if (s.equals(r.getTroll())) {
-                        Integer count = m.getOrDefault(r.getCleanUser(), 0);
-                        m.put(r.getCleanUser(), ++count);
-                    }
+                    r.sendMail(m, s);
                 }
             }
         }
 
-        m.keySet().forEach(e -> System.out.println(e + " : " + m.get(e)));
         int[] result = new int[id_list.length];
 
         for (int i = 0; i < result.length; i++) {
@@ -48,7 +42,6 @@ public class ReportResult {
             } else {
                 result[i] = m.get(id_list[i]);
             }
-            System.out.println(result[i]);
         }
 
     }
@@ -68,20 +61,19 @@ class Report {
         this.troll = troll;
     }
 
+    public void sendMail(Map<String, Integer> m, String troll) {
+        if (troll.equals(getTroll())) {
+            Integer count = m.getOrDefault(getCleanUser(), 0);
+            m.put(getCleanUser(), ++count);
+        }
+    }
+
     public String getCleanUser() {
         return cleanUser;
     }
 
     public String getTroll() {
         return troll;
-    }
-
-    @Override
-    public String toString() {
-        return "Report{" +
-                "cleanUser='" + cleanUser + '\'' +
-                ", troll='" + troll + '\'' +
-                '}';
     }
 
     @Override
