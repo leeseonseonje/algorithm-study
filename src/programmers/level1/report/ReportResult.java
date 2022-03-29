@@ -1,4 +1,4 @@
-package programmers.report;
+package programmers.level1.report;
 
 import java.util.*;
 
