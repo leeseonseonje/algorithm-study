@@ -20,23 +20,14 @@ public class OpenChatting {
                 .collect(toList());
 
         Map<String, String> map = new HashMap<>();
-        for (Record r : records) {
-            if (r.getCommand() != Command.LEAVE) {
-                map.put(r.getId(), r.getName());
-            }
-        }
+        records.stream().filter(r -> r.getCommand() != Command.LEAVE).forEach(r -> map.put(r.getId(), r.getName()));
 
-        for (Record r : records) {
-                r.setName(map.get(r.getId()));
-        }
+        records.forEach(r -> r.setName(map.get(r.getId())));
 
-        List<String> result = new LinkedList<>();
+        List<String> result = records.stream().filter(r -> r.getCommand() != Command.CHANGE)
+                .map(r -> r.getCommand().getCommandMessage().message(r.getName()))
+                .collect(toList());
 
-        for (int i = 0; i < records.size(); i++) {
-            if (records.get(i).getCommand() != Command.CHANGE) {
-                result.add(records.get(i).getCommand().getCommandMessage().message(records.get(i).getName()));
-            }
-        }
         String[] z = result.toArray(new String[0]);
         Arrays.stream(z).forEach(System.out::println);
     }
