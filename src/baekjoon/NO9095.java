@@ -14,8 +14,6 @@ public class NO9095 {
         for (int i = 0; i < t; i++) {
             logic((scanner.nextInt()));
         }
-
-
     }
     
     static void logic(int n) {
