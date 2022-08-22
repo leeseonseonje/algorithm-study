@@ -11,24 +11,23 @@ public class NumberCardGame {
         int n = scan.nextInt();
         int m = scan.nextInt();
 
-        int[] cardNumbers = rowMin(scan, n, m);
+        int result = rowMin(scan, n, m);
 
-        Arrays.sort(cardNumbers);
-        System.out.println(cardNumbers[cardNumbers.length-1]);
+        System.out.println(result);
+
     }
 
-    private static int[] rowMin(Scanner scan, int n, int m) {
-        int[] cardNumbers = new int[n];
+    private static int rowMin(Scanner scan, int n, int m) {
         int min = 10001;
+        int max = 0;
 
-        for (int i = 0; i < cardNumbers.length; i++) {
+        for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 min = Math.min(min, scan.nextInt());
             }
-            cardNumbers[i] = min;
+            max = Math.max(max, min);
             min = 10001;
         }
-
-        return cardNumbers;
+        return max;
     }
 }
