@@ -1,6 +1,8 @@
-package thisiscodingtest;
+package thisiscodingtest.timecomplexity;
 
 import java.util.Arrays;
+
+import static java.lang.Math.*;
 
 public class SortTimeCompare {
 
@@ -46,7 +48,7 @@ public class SortTimeCompare {
 
     private static void initArray(int[] array) {
         for (int i = 0; i < array.length; i++) {
-            array[i] = (int) (Math.random() * 100) + 1;
+            array[i] = (int) (random() * 100) + 1;
         }
     }
 }
