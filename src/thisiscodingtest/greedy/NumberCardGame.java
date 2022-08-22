@@ -1,7 +1,5 @@
 package thisiscodingtest.greedy;
 
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class NumberCardGame {
@@ -11,13 +9,13 @@ public class NumberCardGame {
         int n = scan.nextInt();
         int m = scan.nextInt();
 
-        int result = rowMin(scan, n, m);
+        int result = columnMaxRowMin(scan, n, m);
 
         System.out.println(result);
 
     }
 
-    private static int rowMin(Scanner scan, int n, int m) {
+    private static int columnMaxRowMin(Scanner scan, int n, int m) {
         int min = 10001;
         int max = 0;
 
