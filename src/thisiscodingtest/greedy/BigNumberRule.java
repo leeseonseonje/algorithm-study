@@ -20,8 +20,11 @@ public class BigNumberRule {
 
         Arrays.sort(numbers, reverseOrder());
 
-        int sum = bigNumberPlus(m, k, numbers);
-        System.out.println(sum);
+        int result = bigNumberPlus(m, k, numbers);
+        System.out.println(result);
+
+        int deepResult = deep(m, k, numbers);
+        System.out.println(deepResult);
     }
 
     private static Integer[] initArray(Scanner scan, int n) {
@@ -44,6 +47,15 @@ public class BigNumberRule {
                 sum += numbers[1];
             }
         }
+        return sum;
+    }
+
+    private static int deep(int m, int k, Integer[] numbers) {
+        int count = m / (k + 1) * k;
+        count += m % (k + 1);
+
+        int sum = numbers[0] * count;
+        sum += numbers[1] * (m - count);
         return sum;
     }
 }
