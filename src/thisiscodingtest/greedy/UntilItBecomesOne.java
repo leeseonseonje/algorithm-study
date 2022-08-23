@@ -14,11 +14,10 @@ public class UntilItBecomesOne {
         while (n != 1) {
             if (n % k == 0) {
                 n /= k;
-                count++;
             } else {
                 n -= 1;
-                count++;
             }
+            count++;
         }
         System.out.println(count);
     }

@@ -9,13 +9,15 @@ public class UpDownLeftRight {
         Scanner scan = new Scanner(System.in);
         int n = scan.nextInt();
 
+        directionMove(scan, n);
+    }
+
+    private static void directionMove(Scanner scan, int n) {
         int row = 0;
         int column = 0;
 
-        String direction = "";
         for (int i = 0; i <= 6; i++) {
-            direction = scan.nextLine();
-            switch (direction) {
+            switch (scan.nextLine()) {
                 case "L":
                     if (column - 1 > 0) {
                         column--;
