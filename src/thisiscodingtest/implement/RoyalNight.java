@@ -1,9 +1,7 @@
 package thisiscodingtest.implement;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 import static java.lang.Integer.*;
 import static java.util.Arrays.*;
@@ -12,8 +10,6 @@ import static java.util.stream.Collectors.*;
 public class RoyalNight {
 
     public static void main(String[] args) {
-        int[][] garden = new int[8][8];
-
         Scanner scan = new Scanner(System.in);
         String location = scan.nextLine();
         int row = location.charAt(0) - 96;
@@ -21,7 +17,6 @@ public class RoyalNight {
 
         String[] steps = {"-2,-1", "-1,-2", "1,-2", "2,-1", "2,1", "1,2", "-1,2", "-2,1"};
         int count = 0;
-
 
         for (int i = 0; i < steps.length; i++) {
             List<Integer> list = stream(steps[i].split(","))
