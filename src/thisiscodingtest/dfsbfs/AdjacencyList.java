@@ -20,18 +20,18 @@ public class AdjacencyList {
     }
 
     static class Node {
-        int x;
+        int node;
 
-        int y;
+        int edge;
 
-        public Node(int x, int y) {
-            this.x = x;
-            this.y = y;
+        public Node(int node, int edge) {
+            this.node = node;
+            this.edge = edge;
         }
 
         @Override
         public String toString() {
-            return "(" + x + ", " + y + ")";
+            return "(" + node + ", " + edge + ")";
         }
     }
 }
