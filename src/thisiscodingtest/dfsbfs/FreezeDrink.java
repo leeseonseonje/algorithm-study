@@ -4,21 +4,45 @@ import java.util.Scanner;
 
 public class FreezeDrink {
 
-    public static void main(String[] args) {
-        int[][] iceFrame = inputData();
-        String[] directions = {"-1,0", "0,1", "1,0", "0,-1"};
+    private static int n, m;
+    private static int[][] iceFrame;
 
+    public static void main(String[] args) {
+        iceFrame = inputData();
+
+        int result = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (dfs(i, j)) {
+                    result += 1;
+                }
+            }
+        }
+        System.out.println(result);
     }
 
-    private static void dfs(int[][] iceFrame, int[][] directions, int n) {
+    private static boolean dfs(int x, int y) {
+        iceFrame[x][y] = 1;
 
+        if (x <= -1 || x >= n || y <= -1 || y >= n) {
+            return false;
+        }
 
+        if (iceFrame[x][y] == 0) {
+            iceFrame[x][y] = 1;
+            dfs(x - 1, y);
+            dfs(x, y - 1);
+            dfs(x + 1, y);
+            dfs(x, y + 1);
+            return true;
+        }
+        return false;
     }
 
     private static int[][] inputData() {
         Scanner scan = new Scanner(System.in);
-        int n = scan.nextInt();
-        int m = scan.nextInt();
+        n = scan.nextInt();
+        m = scan.nextInt();
 
         int[][] iceFrame = new int[n][m];
 
