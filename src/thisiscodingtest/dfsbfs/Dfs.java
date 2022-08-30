@@ -20,7 +20,7 @@ public class Dfs {
 
     public static void dfs(int[][] graph, int n, boolean[] visited) {
         visited[n] = true;
-        System.out.println(n + ", ");
+        System.out.print(n + ", ");
         for (int i : graph[n]) {
             if (!visited[i]) {
                 dfs(graph, i, visited);
